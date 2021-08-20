@@ -5,7 +5,7 @@ const iOSTransformer = {
     return "// " + comment;
   },
   transformKeyValue: function(key, value) {
-    let normalizedValue = value.replace(/%newline%/gi, "\\n")
+    let normalizedValue = value.toString().replace(/%newline%/gi, "\\n");
     normalizedValue = normalizedValue.replace(/"/gi, '\\"')
     normalizedValue = normalizedValue.replace(/%([@df])/gi, '%$1')
     normalizedValue = normalizedValue.replace(/%s/gi, "%@")
@@ -32,7 +32,7 @@ const androidTransformer = {
     return "<!-- " + comment + " -->";
   },
   transformKeyValue: function(key, value) {
-    let normalizedValue = value.replace(/%newline%/gi, "\\n");
+    let normalizedValue = value.toString().replace(/%newline%/gi, "\\n");
     normalizedValue = normalizedValue.replace(/'/gi, "\\'");
     normalizedValue = normalizedValue.replace(/%([sdf])/gi, '%#$$$1');
     normalizedValue = normalizedValue.replace(/&/gi, "&amp;");
